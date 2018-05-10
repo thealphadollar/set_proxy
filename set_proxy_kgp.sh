@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 # A script to set system-wide proxy in Ubuntu / Debian
 # for KGP junta
 # created by thealphadollar

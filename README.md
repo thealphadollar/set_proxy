@@ -3,10 +3,10 @@
 The script in the repository sets proxy for almost everything in the
 Ubuntu/Debian system.
 
--- Gnome system wise
--- Apt Package Installer
--- Environment 
--- Export to terminal
+-- Gnome system wise</br>
+-- Apt Package Installer</br>
+-- Environment</br>
+-- Export to terminal</br>
 
 ## How to run
 
