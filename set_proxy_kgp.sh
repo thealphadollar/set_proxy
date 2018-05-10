@@ -25,6 +25,7 @@ sudo sed -i.bak '/http[s]::proxy/Id' /etc/apt/apt.conf
 sudo tee -a /etc/apt/apt.conf <<EOF
 Acquire::http::proxy "http://${PROXY_HOST}:${PROXY_PORT}/";
 Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}/";
+Acquire::ftp::Proxy "http://${PROXY_HOST}:${PROXY_PORT}/";
 EOF
 
 ## in apt.conf.d/70debconf
@@ -49,6 +50,11 @@ sudo sed -i.bak '/http[s]_proxy/Id' /etc/environment
 sudo tee -a /etc/environment <<EOF
 http_proxy="http://${PROXY_HOST}:${PROXY_PORT}/"
 https_proxy="http://${PROXY_HOST}:${PROXY_PORT}/"
+ftp_proxy="http://${PROXY_HOST}:${PROXY_PORT}/"
+HTTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}/"
+HTTPS_PROXY="http://${PROXY_HOST}:${PROXY_PORT}/"
+FTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}/"
+no_proxy=127.0.0.0/8,::1,10.0.0.0/8
 EOF
 
 
