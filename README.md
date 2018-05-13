@@ -1,4 +1,4 @@
-# LINUX Proxy KGP 
+# LINUX Proxy 
 
 The script in the repository sets proxy for most frequently used commands in the
 Ubuntu/Debian system.
@@ -16,14 +16,16 @@ You need to have internet to download the script, use mobile data and hotspot.
 - Install wget. </br>
     `sudo apt-get install wget`
 - Download the repository.</br>
-    `wget https://github.com/thealphadollar/set_proxy_kgp/archive/master.zip`
+    `wget https://github.com/thealphadollar/set_proxy/archive/master.zip`
 - Unzip the file.</br>
     `unzip master.zip`
 - Change directory to the inflated archive folder.</br>
-    `cd ./set_proxy_kgp-master`
+    `cd ./set_proxy-master`
 - Make the script executable and launch it.</br>
-    `sudo chmod +x set_proxy_kgp.sh && sudo ./set_proxy_kgp.sh`
-- Preferably restart the system, or at least restart the terminal session.
+    `sudo chmod +x set_proxy.sh && sudo ./set_proxy.sh`
+- Enter `proxy host` (172.16.2.30 for KGP) and `proxy port` (8080 for KGP) when
+  prompted.</br>
+- Voila, proxy set! Preferably restart the system, or at least restart the terminal session.
 
 ## Test
 

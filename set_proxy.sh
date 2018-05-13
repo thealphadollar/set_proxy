@@ -1,10 +1,9 @@
 #! /bin/sh
 # A script to set system-wide proxy in Ubuntu / Debian
-# for KGP junta
 # created by thealphadollar
 
-PROXY_HOST=172.16.2.30
-PROXY_PORT=8080
+echo "Proxy Host:"; read PROXY_HOST
+echo "Proxy Port:"; read PROXY_PORT
 
 # setting system wide proxy
 gsettings set org.gnome.system.proxy mode manual
