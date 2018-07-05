@@ -7,7 +7,9 @@ do
 case $i in
     --reset)
     gsettings set org.gnome.system.proxy mode none
-    sudo truncate -s 0 {/etc/apt/apt.conf,/etc/apt/apt.conf.d/70debconf,/etc/profile.d/proxy.sh}
+    sudo truncate -s 0 /etc/profile.d/proxy.sh
+    sudo sed -i.bak "/Acquire::/d" /etc/apt/apt.conf
+    sudo sed -i.bak "/Acquire::/,+10d" /etc/apt/apt.conf.d/70debconf
     sudo sed -i -e "s/${http_proxy}//g" /etc/environment
     exit 0
     ;;
