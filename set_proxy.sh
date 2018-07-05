@@ -3,10 +3,15 @@
 # created by thealphadollar
 # Contributions from TheMousePotato
 
+if [ "$EUID" -ne 0 ]
+   then echo "Error: needs to be run as sudo!!"
+   exit 1
+fi
+
 for i in "$@"
 do
 case $i in
-    --reset)
+    --unset)
     gsettings set org.gnome.system.proxy mode none
     sudo truncate -s 0 /etc/profile.d/proxy.sh
     sudo sed -i.bak "/Acquire::/d" /etc/apt/apt.conf
