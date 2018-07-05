@@ -3,7 +3,7 @@
 # created by thealphadollar
 # Contributions from TheMousePotato
 
-if [ "$EUID" -ne 0 ]
+if [ `id -u` -ne 0 ]
    then echo "Error: needs to be run as sudo!!"
    exit 1
 fi
@@ -13,10 +13,10 @@ do
 case $i in
     --unset)
     gsettings set org.gnome.system.proxy mode none
-    sudo truncate -s 0 /etc/profile.d/proxy.sh
-    sudo sed -i.bak "/Acquire::/d" /etc/apt/apt.conf
-    sudo sed -i.bak "/Acquire::/,+10d" /etc/apt/apt.conf.d/70debconf
-    sudo sed -i -e "s/${http_proxy}//g" /etc/environment
+    truncate -s 0 /etc/profile.d/proxy.sh
+    sed -i.bak "/Acquire::/d" /etc/apt/apt.conf
+    sed -i.bak "/Acquire::/,+10d" /etc/apt/apt.conf.d/70debconf
+    sed -i -e "s/${http_proxy}//g" /etc/environment
     if hash git 2>/dev/null; then
 	git config --global --unset http.proxy
     fi
@@ -47,16 +47,16 @@ gsettings set org.gnome.system.proxy.socks port "$PROXY_PORT"
 
 # setting apt proxy
 ## in apt.conf
-sudo sed -i.bak '/http[s]::proxy/Id' /etc/apt/apt.conf
-sudo tee -a /etc/apt/apt.conf <<EOF
+sed -i.bak '/http[s]::proxy/Id' /etc/apt/apt.conf
+tee -a /etc/apt/apt.conf <<EOF
 Acquire::http::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::ftp::Proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 EOF
 
 ## in apt.conf.d/70debconf
-sudo sed -i.bak '/http[s]::proxy/Id' /etc/apt/apt.conf.d/70debconf
-sudo tee -a /etc/apt/apt.conf.d/70debconf <<EOF
+sed -i.bak '/http[s]::proxy/Id' /etc/apt/apt.conf.d/70debconf
+tee -a /etc/apt/apt.conf.d/70debconf <<EOF
 Acquire::http::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::ftp
@@ -72,8 +72,8 @@ EOF
 
 
 # setting environment proxy
-sudo sed -i.bak '/http[s]_proxy/Id' /etc/environment
-sudo tee -a /etc/environment <<EOF
+sed -i.bak '/http[s]_proxy/Id' /etc/environment
+tee -a /etc/environment <<EOF
 http_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 https_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 ftp_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
@@ -84,8 +84,8 @@ no_proxy=127.0.0.0/8,::1,10.0.0.0/8
 EOF
 
 # proxy for profile
-sudo touch /etc/profile.d/proxy.sh
-sudo tee -a /etc/profile.d/proxy.sh <<EOF
+touch /etc/profile.d/proxy.sh
+tee -a /etc/profile.d/proxy.sh <<EOF
 export http_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 export https_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 export HTTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
