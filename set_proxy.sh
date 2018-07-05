@@ -1,6 +1,7 @@
 #! /bin/sh
 # A script to set system-wide proxy in Ubuntu / Debian
 # created by thealphadollar
+# Contributions from TheMousePotato
 
 for i in "$@"
 do
@@ -11,6 +12,9 @@ case $i in
     sudo sed -i.bak "/Acquire::/d" /etc/apt/apt.conf
     sudo sed -i.bak "/Acquire::/,+10d" /etc/apt/apt.conf.d/70debconf
     sudo sed -i -e "s/${http_proxy}//g" /etc/environment
+    if hash git 2>/dev/null; then
+	git config --global --unset http.proxy
+    fi
     exit 0
     ;;
     *)
@@ -82,3 +86,9 @@ export https_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 export HTTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
 export HTTPS_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
 EOF
+
+# application specific proxy
+# git
+if hash git 2>/dev/null; then
+	git config --global http.proxy "http://${PROXY_HOST}:${PROXY_PORT}"
+fi
