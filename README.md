@@ -1,12 +1,13 @@
 # LINUX Proxy 
 
-The script in the repository sets proxy for most frequently used commands in the
+The script in the repository sets/unsets proxy for most frequently used commands in the
 Ubuntu/Debian system.
 
--- Gnome system wide</br>
--- Apt Package Installer</br>
--- Environment</br>
--- Terminal</br>
+- Gnome system wide</br>
+- Apt Package Installer</br>
+- Environment</br>
+- Terminal</br>
+- Git</br>
 
 ## How to run
 
@@ -21,11 +22,18 @@ You need to have internet to download the script, use mobile data and hotspot.
     `unzip master.zip`
 - Change directory to the inflated archive folder.</br>
     `cd ./set_proxy-master`
-- Make the script executable and launch it.</br>
-    `sudo chmod +x set_proxy.sh && sudo ./set_proxy.sh`
+- Launch the script </b>
+    `sudo ./set_proxy.sh`
 - Enter `proxy host` (172.16.2.30 for KGP) and `proxy port` (8080 for KGP) when
   prompted.</br>
 - Voila, proxy set! Preferably restart the system, or at least restart the terminal session.
+
+## Going Home?
+
+You can use the same script to remove proxy from your system when going to
+home. Just run following command in your terminal and restart system.
+
+`sudo ./set_proxy.sh --unset`
 
 ## Test
 
