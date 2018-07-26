@@ -28,6 +28,9 @@ You need to have internet to download the script, use mobile data and hotspot.
   prompted.</br>
 - Voila, proxy set! Preferably restart the system, or at least restart the terminal session.
 
+## Set proxy for adding PPAs
+https://askubuntu.com/a/932370
+
 ## Going Home?
 
 You can use the same script to remove proxy from your system when going to
