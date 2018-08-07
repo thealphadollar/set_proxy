@@ -16,7 +16,8 @@ case $i in
     truncate -s 0 /etc/profile.d/proxy.sh
     sed -i.bak "/Acquire::/d" /etc/apt/apt.conf
     sed -i.bak "/Acquire::/,+10d" /etc/apt/apt.conf.d/70debconf
-    sed -i -e "s/${http_proxy}//g" /etc/environment
+    sed -i "/proxy/d" /etc/environment
+    sed -i "/PROXY/d" /etc/environment
     if hash git 2>/dev/null; then
 	git config --global --unset http.proxy
     fi
