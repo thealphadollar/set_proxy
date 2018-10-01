@@ -81,7 +81,7 @@ ftp_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 HTTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
 HTTPS_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
 FTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
-no_proxy=127.0.0.0/8,::1,10.0.0.0/8
+no_proxy=localhost,127.0.0.0/8,::1,10.0.0.0/8
 EOF
 
 # proxy for profile
