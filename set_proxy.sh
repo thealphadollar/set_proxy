@@ -42,9 +42,7 @@ gsettings set org.gnome.system.proxy.https host "$PROXY_HOST"
 gsettings set org.gnome.system.proxy.https port "$PROXY_PORT"
 gsettings set org.gnome.system.proxy.ftp host "$PROXY_HOST"
 gsettings set org.gnome.system.proxy.ftp port "$PROXY_PORT"
-gsettings set org.gnome.system.proxy.socks host "$PROXY_HOST"
-gsettings set org.gnome.system.proxy.socks port "$PROXY_PORT"
-
+gsettings set org.gnome.system.proxy ignore-hosts "['localhost', '127.0.0.0/8', '127.0.0.1/8', '::1', '10.*.*.*']"
 
 # setting apt proxy
 ## in apt.conf
@@ -52,7 +50,7 @@ sed -i.bak '/http[s]::proxy/Id' /etc/apt/apt.conf
 tee -a /etc/apt/apt.conf <<EOF
 Acquire::http::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
-Acquire::ftp::Proxy "http://${PROXY_HOST}:${PROXY_PORT}";
+Acquire::ftp::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 EOF
 
 ## in apt.conf.d/70debconf
@@ -81,7 +79,7 @@ ftp_proxy="http://${PROXY_HOST}:${PROXY_PORT}"
 HTTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
 HTTPS_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
 FTP_PROXY="http://${PROXY_HOST}:${PROXY_PORT}"
-no_proxy=localhost,127.0.0.0/8,::1,10.0.0.0/8
+no_proxy=localhost,127.0.0.0/8,::1,10.0.0.0/8,127.0.0.1/8
 EOF
 
 # proxy for profile
