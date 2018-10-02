@@ -35,7 +35,7 @@ echo "Proxy Port:"; read PROXY_PORT
 
 
 # setting system wide proxy
-gsettings set org.gnome.system.proxy mode manual
+gsettings set org.gnome.system.proxy mode 'manual'
 gsettings set org.gnome.system.proxy.http host "$PROXY_HOST"
 gsettings set org.gnome.system.proxy.http port "$PROXY_PORT"
 gsettings set org.gnome.system.proxy.https host "$PROXY_HOST"
