@@ -60,7 +60,7 @@ Acquire::http::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::ftp
  {
-   Proxy "ftp://${PROXY_HOST}:{PROXY_PORT}";
+   Proxy "ftp://${PROXY_HOST}:${PROXY_PORT}";
    ProxyLogin 
    {
       "USER $(SITE_USER)@$(SITE)";
