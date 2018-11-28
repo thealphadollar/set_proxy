@@ -20,6 +20,7 @@ case $i in
     sed -i "/PROXY/d" /etc/environment
     if hash git 2>/dev/null; then
 	git config --global --unset http.proxy
+	git config --global --unset https.proxy
     fi
     exit 0
     ;;
@@ -95,4 +96,5 @@ EOF
 # git
 if hash git 2>/dev/null; then
 	git config --global http.proxy "http://${PROXY_HOST}:${PROXY_PORT}"
+	git config --global https.proxy "http://${PROXY_HOST}:${PROXY_PORT}"
 fi
