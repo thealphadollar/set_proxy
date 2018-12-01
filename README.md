@@ -47,4 +47,4 @@ If all the above steps pass, congratulations!
 
 # support
 
-For any quries, please raise an issue or contant github@thealphadollar.
+For any queries, please raise an issue or contact github@thealphadollar.
