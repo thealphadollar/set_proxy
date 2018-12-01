@@ -1,7 +1,7 @@
 #! /bin/sh
 # A script to set system-wide proxy in Ubuntu / Debian
 # created by thealphadollar
-# Contributions from TheMousePotato
+# Contributions from TheMousePotato and Ayushk4
 
 if [ `id -u` -ne 0 ]
    then echo "Error: needs to be run as sudo!!"
