@@ -48,3 +48,7 @@ If all the above steps pass, congratulations!
 # support
 
 For any queries, please raise an issue or contact github@thealphadollar.
+
+## Contributing
+
+Please read CONTRIBUTING.md guide to know more.
