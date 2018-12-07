@@ -30,11 +30,17 @@ if hash git 2>/dev/null; then
   git config --global --unset http.proxy
   git config --global --unset https.proxy
 fi
+if hash docker 2>/dev/null; then
+  truncate -s 0 /etc/systemd/system/docker.service.d/http-proxy.conf
+  truncate -s 0 ~/.docker/config.json
+  systemctl daemon-reload
+  systemctl restart docker
+fi
 echo "done"
 }
 
 # setting system wide proxy
-set_systemwide_proxy () 
+set_systemwide_proxy ()
 {
 gsettings set org.gnome.system.proxy mode 'manual'
 gsettings set org.gnome.system.proxy.http host "$PROXY_HOST"
@@ -71,7 +77,7 @@ Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::ftp
  {
    Proxy "ftp://${PROXY_HOST}:${PROXY_PORT}";
-   ProxyLogin 
+   ProxyLogin
    {
       "USER $(SITE_USER)@$(SITE)";
       "PASS $(SITE_PASS)";
@@ -97,7 +103,7 @@ EOF
 echo "Environment proxy set"
 }
 
-# setting bash profile proxy 
+# setting bash profile proxy
 set_profile_proxy ()
 {
 touch /etc/profile.d/proxy.sh
@@ -122,14 +128,56 @@ fi
 echo "Git proxy set"
 }
 
+#setting docker proxy
+set_docker_proxy ()
+{
+if hash docker 2>/dev/null; then
+      if [ ! -d "/etc/systemd/system/docker.service.d" ]
+      then
+               mkdir /etc/systemd/system/docker.service.d
+      fi
+      touch /etc/systemd/system/docker.service.d/http-proxy.conf
+      tee  /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
+[Service]
+Environment="HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/"
+Environment="NO_PROXY=localhost,127.0.0.0/8"
+EOF
+      if [ ! -d "~/.docker" ] then
+              mkdir ~/.docker
+      fi
+      touch ~/.docker/config.json
+      tee  ~/.docker/config.json <<EOF
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://${PROXY_HOST}:${PROXY_PORT}",
+     "noProxy": "*.test.example.com,.example2.com",
+     "httpsProxy": "https://${PROXY_HOST}:${PROXY_PORT}",
+     "ftpProxy": "ftp://${PROXY_HOST}:${PROXY_PORT}"
+   }
+ }
+}
+EOF
+      #flash changes
+      systemctl daemon-reload
+      #verify proxy setting
+      systemctl show --property Environment docker
+      #restart docker
+      systemctl restart docker
+fi
+echo "Docker proxy set"
+}
+
 if [ "$#" -eq 1 ]; then
-  case $1 in    
-    -u| --unset)    
+  case $1 in
+    -u| --unset)
       reset_proxy
       exit 0
       ;;
-    *)          
-      exit_with_usage 
+    *)
+      exit_with_usage
       ;;
   esac
 fi
@@ -149,13 +197,13 @@ if [ "$#" -eq 4 ]; then
             echo $PROXY_PORT
             shift
             ;;
-          *) 
-            exit_with_usage 
+          *)
+            exit_with_usage
             ;;
         esac
         ;;
-      *) 
-        exit_with_usage 
+      *)
+        exit_with_usage
         ;;
     esac
   done
@@ -169,3 +217,4 @@ set_apt_proxy_old
 set_apt_proxy
 set_profile_proxy
 set_git_proxy
+set_docker_proxy
