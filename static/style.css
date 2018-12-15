@@ -1,6 +1,10 @@
-
 body {
     font-family: 'Archivo', sans-serif;
+    background: url('../static/wallpaper.png') no-repeat fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     
 }
 #head{
@@ -16,16 +20,28 @@ body {
     color: rgba(16,47,92,0.9);
     font:normal 1.95vw Lucida Sans Unicode,Lucida Grande,sans-serif;
 }
+.info,.image{
+    display: inline;
+}
+.image{
+    float:right;
+    margin-bottom: 100px;
+}
 .info{
+    float: left;
+    font-size: 120%;
     border:2px solid black;
-    width: 40%;
+    width: auto;
+    margin-bottom: 100px;
+}
+fieldset{
+    border-color: black;
 }
 .button {
     width: 200px;
     margin: 150px auto;
     margin-bottom: 50px;
 }
-
 .button a {
     display: block;
     height: 50px;
