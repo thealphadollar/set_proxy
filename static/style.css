@@ -8,6 +8,9 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
+    display: block;
+    position: absolute;
+    width: 100%;
 }
 #head{
     margin-top: 1%;
@@ -29,7 +32,8 @@ body {
     float:right;
     margin-bottom: 100px;
     right: 7%;
-    position: absolute;
+    position: relative;
+    display: block;
 }
 .info{
     float: left;
@@ -38,7 +42,8 @@ body {
     width: auto;
     margin-bottom: 100px;
     left: 7%;
-    position: absolute;
+    position: relative;
+    display: block;
 }
 fieldset{
     border-color: black;
@@ -69,6 +74,7 @@ fieldset{
     -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
     box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    display: block;
 }
 
 .bottom{
@@ -98,3 +104,14 @@ fieldset{
 .button:active .bottom { margin: -20px 0 0 10px }
 
 .button:active .top { margin: -70px 0 0 10px }
+
+.footer{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 135%;
+    position: relative;
+    display: block;
+    width: 100%;
+    clear: both;
+}
