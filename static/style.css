@@ -5,7 +5,9 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    
+    height: 100%;
+    padding: 0;
+    margin: 0;
 }
 #head{
     margin-top: 1%;
@@ -26,6 +28,8 @@ body {
 .image{
     float:right;
     margin-bottom: 100px;
+    right: 7%;
+    position: absolute;
 }
 .info{
     float: left;
@@ -33,6 +37,8 @@ body {
     border:2px solid black;
     width: auto;
     margin-bottom: 100px;
+    left: 7%;
+    position: absolute;
 }
 fieldset{
     border-color: black;
@@ -41,6 +47,7 @@ fieldset{
     width: 200px;
     margin: 150px auto;
     margin-bottom: 50px;
+    padding-top: 2%;
 }
 .button a {
     display: block;
