@@ -3,7 +3,7 @@
 # created by thealphadollar
 # Contributions from TheMousePotato and Ayushk4
 
-if [ `id -u` -ne 0 ]
+if [ "$(id -u)" -ne 0 ]
   then echo "Error: needs to be run as sudo!!"
   exit 1
 fi
@@ -142,7 +142,8 @@ if hash docker 2>/dev/null; then
 Environment="HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/"
 Environment="NO_PROXY=localhost,127.0.0.0/8"
 EOF
-      if [ ! -d "~/.docker" ] then
+      if [ ! -d "$HOME/.docker" ] 
+      then
               mkdir ~/.docker
       fi
       touch ~/.docker/config.json
@@ -188,13 +189,13 @@ if [ "$#" -eq 4 ]; then
       -h| --host)
         shift
         PROXY_HOST=$1
-        echo $PROXY_HOST
+        echo "$PROXY_HOST"
         shift
         case $1 in
           -p| --port)
             shift
             PROXY_PORT=$1
-            echo $PROXY_PORT
+            echo "$PROXY_PORT"
             shift
             ;;
           *)

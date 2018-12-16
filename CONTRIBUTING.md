@@ -28,6 +28,8 @@ https://wiredcraft.com/blog/how-we-write-our-github-issues
 
 ## Sending a PR
 
+NOTE: **Before sending your script, please do a syntax check via [ShellCheck](https://www.shellcheck.net/)**
+
 While sending a PR, always remember not to send one from your master branch; it'll lead to commit issues and mismatch. 
 
 It is highly recommended to follow the below guidelines while writing commits and sending PRs:
