@@ -1,3 +1,7 @@
+## WEBAPP
+
+ProxyMaster is now available at https://proxymaster.herokuapp.com
+
 # LINUX Proxy 
 
 The script in the repository sets/unsets proxy for most frequently used commands in the
@@ -48,3 +52,9 @@ If all the above steps pass, congratulations!
 # support
 
 For any queries, please raise an issue or contact github@thealphadollar.
+
+## Contributing
+
+Please read CONTRIBUTING.md guide to know more.
+
+**NOTE**: Before sending your script, please do a syntax check via [ShellCheck](https://www.shellcheck.net/)
