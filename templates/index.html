@@ -1,42 +1,48 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Proxy Master</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="../static/style.css" />
 </head>
+
 <body>
 	<h1 id="head">Proxy Master</h1>
 	<h2 id="head2">One Script to Set It All!</h2>
 	<div class="button">
-        <a href="../static/set_proxy-master.sh" download="set_proxy.sh">Download</a>
-        <p class="bottom">set_proxy-master.sh</p>
+        <a href="../static/set_proxy.sh" download="set_proxy.sh">Download</a>
+        <p class="bottom">set_proxy.sh</p>
     </div>
     <div class="info">
-    	<h3 style="text-align: center;">Instructions</h3>
+    	<h2 style="text-align: left;">Instructions</h2>
+	<h3 style="text-align: left;">Set proxy:</h3>
     	<ol>
-    		<li>Open the downloads directory in a terminal window.</li>
-    		<li>Execute <b><em>sudo bash set_proxy-master.sh</em></b> and enter the password.</li>
-    		<li>Enter the proxy host and port on prompt. <em><b>(172.16.2.30:8080 for KGP)</b></em></li>
+    		<li>Open the downloads directory in the terminal.</li>
+    		<li>Execute <b><em>sudo bash set_proxy.sh -h [PROXY HOST] -p [PROXY    				PORT]</em></b></li>
+    		<li> Enter 'proxy host' <b><em>(172.16.2.30 for KGP)</em></b> and 'proxy 				port' <b><em>(8080 for KGP).</em></b></li>
         </ol>
-        <h3 style="text-align: center;">Going Home?</h3>
-        <ul>
-            <li>Execute <b><em>sudo bash set_proxy-master.sh --unset</em></b> and enter the password. </li>
-        </ul>
-        <h3 style="text-align: center;">Still Need To Manually Set Proxy On:</h3>
-        <ul>
-            <li>Some Users might need to change Settings->Network->Proxy to Manual from Off.</li>
-        </ul>
+        <h3 style="text-align: left;">Unset proxy:</h3>
+        <ol>
+            <li>Execute <b><em>sudo bash set_proxy.sh -u</em></b></li>
+        </ol>
+        <h3 style="text-align: left;">Known issues:</h3>
+        <ol>
+            <li>Some Users might need to enable change Settings->Network->Proxy to 		   Manual from Off.</li>
+        </ol>
     </div>
     <div class="image">
     	<fieldset>
     		<p style="font-size: 120%"><b>To Set Proxy:</b></p>
-    		<img src="../static/top.png">
+    		<img src="../static/SettingProxy.png">
         	<p style="font-size: 120%"><b>To Unset Proxy:</b></p>
-        	<img src="../static/bottom.png">
+        	<img src="../static/UnsettingProxy.png">
         </fieldset>
     </div>
     <br><br>
 </body>
+
 <footer class="footer">Contribute to this project on <a href="https://github.com/CodeStash-KGP/set_proxy" target="_blank">Github</a> | Powered by <a href="https://www.facebook.com/codestashkgp/" target="_blank">MetaKGP</a> with ♥</footer>
 
 </html>

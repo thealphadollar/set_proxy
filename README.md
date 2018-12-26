@@ -25,11 +25,10 @@ You need to have internet to download the script, use mobile data and hotspot.
 - Unzip the file.</br>
     `unzip master.zip`
 - Change directory to the inflated archive folder.</br>
-    `cd ./set_proxy-master`
-- Launch the script </b>
-    `sudo ./set_proxy.sh`
-- Enter `proxy host` (172.16.2.30 for KGP) and `proxy port` (8080 for KGP) when
-  prompted.</br>
+    `cd set_proxy-master`
+- To set the proxy </b>
+    `sudo bash set_proxy.sh -h [PROXY HOST] -p [PROXY PORT]`
+- Enter `proxy host` (172.16.2.30 for KGP) and `proxy port` (8080 for KGP).</br>
 - Voila, proxy set! Preferably restart the system, or at least restart the terminal session.
 
 ## Going Home?
@@ -37,15 +36,14 @@ You need to have internet to download the script, use mobile data and hotspot.
 You can use the same script to remove proxy from your system when going to
 home. Just run following command in your terminal and restart system.
 
-`sudo ./set_proxy.sh --unset`
+`sudo bash set_proxy.sh -u`
 
 ## Test
 
 Connect to the campus network; wifi or LAN.
 
 - Open `www.google.com` in browser
-- In terminal `sudo apt-get install curl`
-- In terminal `curl www.google.com`
+- Run `ping www.google.com` in terminal
 
 If all the above steps pass, congratulations!
 
