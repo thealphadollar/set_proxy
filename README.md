@@ -43,7 +43,7 @@ home. Just run following command in your terminal and restart system.
 Connect to the campus network; wifi or LAN.
 
 - Open `www.google.com` in browser
-- Run `ping www.google.com` in terminal
+- Install curl by running `sudo apt-get install curl` in the terminal then run `curl www.google.com` in the terminal
 
 If all the above steps pass, congratulations!
 
