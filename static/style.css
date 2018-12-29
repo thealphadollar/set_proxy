@@ -1,6 +1,6 @@
 body {
     font-family: 'Archivo', sans-serif;
-    background: url('../static/wallpaper.png') no-repeat fixed; 
+     background: rgb(149, 194, 215);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,6 +11,7 @@ body {
     display: block;
     position: absolute;
     width: 100%;
+	
 }
 #head{
     margin-top: 1%;
@@ -20,7 +21,7 @@ body {
 }
 #head2{
     margin-top:-2%;
-    margin-bottom: -8%;
+    margin-bottom: -10%;
     text-align: center;
     color: rgba(16,47,92,0.9);
     font:normal 1.95vw Lucida Sans Unicode,Lucida Grande,sans-serif;
@@ -30,7 +31,7 @@ body {
 }
 .image{
     float:right;
-    margin-bottom: 100px;
+    margin-bottom: 55px;
     right: 7%;
     position: relative;
     display: block;
@@ -40,7 +41,7 @@ body {
     font-size: 120%;
     border:2px solid black;
     width: auto;
-    margin-bottom: 100px;
+    margin-bottom: 55px;
     left: 7%;
     position: relative;
     display: block;
