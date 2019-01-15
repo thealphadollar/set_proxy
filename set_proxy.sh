@@ -133,7 +133,6 @@ if [ "$#" -eq 1 ]; then
       ;;
   esac
 elif [ "$#" -eq 4 ]; then
-  while [ "$1" != "" ]; do
     case $1 in
       -h| --host)
         shift
@@ -156,7 +155,6 @@ elif [ "$#" -eq 4 ]; then
         exit_with_usage 
         ;;
     esac
-  done
 else
   exit_with_usage
 fi
