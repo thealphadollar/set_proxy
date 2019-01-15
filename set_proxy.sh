@@ -3,7 +3,7 @@
 # created by thealphadollar
 # Contributions from TheMousePotato and Ayushk4
 
-if [ `id -u` -ne 0 ]
+if [ $(id -u) -ne 0 ]
   then echo "Error: needs to be run as sudo!!"
   exit 1
 fi
