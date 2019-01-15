@@ -132,9 +132,7 @@ if [ "$#" -eq 1 ]; then
       exit_with_usage 
       ;;
   esac
-fi
-
-if [ "$#" -eq 4 ]; then
+elif [ "$#" -eq 4 ]; then
   while [ "$1" != "" ]; do
     case $1 in
       -h| --host)
@@ -159,8 +157,8 @@ if [ "$#" -eq 4 ]; then
         ;;
     esac
   done
-  else
-    exit_with_usage
+else
+  exit_with_usage
 fi
 
 set_systemwide_proxy
