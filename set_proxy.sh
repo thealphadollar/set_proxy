@@ -122,6 +122,49 @@ fi
 echo "Git proxy set"
 }
 
+# setting docker proxy
+set_docker_proxy ()
+{
+if hash docker 2>/dev/null; then
+      if [ ! -d "/etc/systemd/system/docker.service.d" ]
+      then
+               mkdir /etc/systemd/system/docker.service.d
+      fi
+      touch /etc/systemd/system/docker.service.d/http-proxy.conf
+      tee  /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
+[Service]
+Environment="HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/"
+Environment="NO_PROXY=localhost,127.0.0.0/8"
+EOF
+      if [ ! -d "$HOME/.docker" ]
+      then
+              mkdir ~/.docker
+      fi
+      touch ~/.docker/config.json
+      tee  ~/.docker/config.json <<EOF
+{
+ "proxies":
+ {
+   "default":
+   {
+     "httpProxy": "http://${PROXY_HOST}:${PROXY_PORT}",
+     "noProxy": "*.test.example.com,.example2.com",
+     "httpsProxy": "https://${PROXY_HOST}:${PROXY_PORT}",
+     "ftpProxy": "ftp://${PROXY_HOST}:${PROXY_PORT}"
+   }
+ }
+}
+EOF
+      #flash changes
+      systemctl daemon-reload
+      #verify proxy setting
+      systemctl show --property Environment docker
+      #restart docker
+      systemctl restart docker
+fi
+echo "Docker proxy set"
+}
+
 if [ "$#" -eq 1 ]; then
   case $1 in    
     -u| --unset)    
@@ -165,3 +208,4 @@ set_apt_proxy_old
 set_apt_proxy
 set_profile_proxy
 set_git_proxy
+set_docker_proxy
