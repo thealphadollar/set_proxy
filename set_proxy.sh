@@ -30,6 +30,12 @@ if hash git 2>/dev/null; then
   git config --global --unset http.proxy
   git config --global --unset https.proxy
 fi
+if hash docker 2>/dev/null; then
+  truncate -s 0 /etc/systemd/system/docker.service.d/http-proxy.conf
+  truncate -s 0 ~/.docker/config.json
+  systemctl daemon-reload
+  systemctl restart docker
+fi
 echo "done"
 }
 
