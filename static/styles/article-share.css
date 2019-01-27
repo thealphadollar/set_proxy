@@ -1,0 +1,10 @@
+.share {
+  display: flex;
+  justify-content: center;
+}
+
+.share img {
+  margin-top: 0.5rem;
+  width: 1.50rem;
+  height: 1.50rem;
+}

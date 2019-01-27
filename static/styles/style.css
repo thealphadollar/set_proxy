@@ -1,6 +1,6 @@
 body {
     font-family: 'Archivo', sans-serif;
-     background: rgb(149, 194, 215);
+     background: hsl(230, 100%, 67%);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,48 +11,27 @@ body {
     display: block;
     position: absolute;
     width: 100%;
-	
+
 }
 #head{
     margin-top: 1%;
     text-align: center;
-    color: rgba(172,36,77,0.8);
+    color: white;
     font:normal 3.8vw Lucida Sans Unicode,Lucida Grande,sans-serif;
+    margin-bottom: 10px;
 }
 #head2{
-    margin-top:-2%;
-    margin-bottom: -10%;
+    margin-bottom: 10px;
     text-align: center;
-    color: rgba(16,47,92,0.9);
+    color: rgba(255,255,255,0.6);
     font:normal 1.95vw Lucida Sans Unicode,Lucida Grande,sans-serif;
 }
-.info,.image{
-    display: inline;
-}
-.image{
-    float:right;
-    margin-bottom: 55px;
-    right: 7%;
-    position: relative;
-    display: block;
-}
-.info{
-    float: left;
-    font-size: 120%;
-    border:2px solid black;
-    width: auto;
-    margin-bottom: 55px;
-    left: 7%;
-    position: relative;
-    display: block;
-}
-fieldset{
-    border-color: black;
-}
+
+
 .button {
     width: 200px;
-    margin: 150px auto;
-    margin-bottom: 50px;
+    margin: 0px auto;
+    margin-bottom: 40px;
     padding-top: 2%;
 }
 .button a {
@@ -65,7 +44,7 @@ fieldset{
     text-align: center;
     text-transform: uppercase;
     background: -moz-linear-gradient(top, #00b7ea 0%, #009ec3 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7ea), color-stop(100%,#009ec3));  
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7ea), color-stop(100%,#009ec3));
 }
 
 .button a, p {
@@ -107,12 +86,12 @@ fieldset{
 .button:active .top { margin: -70px 0 0 10px }
 
 .footer{
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 135%;
-    position: relative;
-    display: block;
-    width: 100%;
-    clear: both;
+
+  color: white;
+  text-align: center;
+  height: 25px;
+  font-size: 95%;
+  position: absolute;
+  width: 100%;
+  clear: both;
 }

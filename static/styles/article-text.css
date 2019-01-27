@@ -1,0 +1,21 @@
+time, h2, p { margin-bottom: 1.5rem; }
+
+h1              { font: 700 2.0rem/1.2 "Roboto"; color: hsl(000, 000%, 33%); }
+h2              { font: 500 1.5rem/1.2 "Roboto"; color: hsl(250, 100%, 67%); }
+
+h3              { font: 700 1.0rem/1.2 "Roboto"; color: hsl(000, 000%, 83%); }
+p               { font: 400 1.0rem/1.5 "Roboto"; color: hsl(000, 000%, 33%); }
+figcaption p    { font: 200 0.8rem/1.1 "Roboto"; color: hsl(000, 000%, 63%); }
+
+article h1 {
+  margin-bottom: 1.5rem;
+}
+
+a { box-shadow: inset 0 -0.15em rgba(172,36,77,0.8); }
+
+@media (max-width: 8.5in) {
+  :root { font-size: 18px; }
+}
+@media (max-width: 5in) {
+  :root { font-size: 16px }
+}
