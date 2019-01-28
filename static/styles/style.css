@@ -1,12 +1,12 @@
 body {
-    background: hsl(230, 100%, 67%);
+    background: hsl(250, 100%, 40%);
 }
 
 #head {
     margin-top: 20px;
     text-align: center;
     color: white;
-    font:500 2.5rem/1.2 "sans-serif";
+    font: 500 2.5rem/1.2 "sans-serif";
     margin-bottom: 10px;
 }
 
@@ -25,8 +25,8 @@ body {
 }
 
 .button a {
-    width: 200px;
-    height: 50px;
+    width: 10rem;
+    height: 2.5rem;
     color: white;
     font: 300 1.0rem/1.0 "sans-serif";
     text-decoration: none;
@@ -49,17 +49,21 @@ body {
 }
 
 .button p {
+
+  text-align: center;
   -moz-border-radius: 0 0 10px 10px;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
 }
 
 .bottom{
-    width: 180px;
-    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.4rem;
+    height: 1.2rem;
     background: #222;
     margin: 10px 0 0 0;
-    text-align: center;
     font: 250 0.55rem/1.5 "sans-serif";
     color: #fff;
     position: absolute;
@@ -68,7 +72,7 @@ body {
     -moz-transition: margin 0.5s ease;
 }
 
-.button:hover .bottom { margin: 30px 0 0 0; }
+.button:hover .bottom { margin: 31px 0 0 0; }
 
 
 .button a:active {
@@ -77,9 +81,20 @@ body {
     background: -webkit-linear-gradient(top,  #00b7ea 36%,#009ec3 100%);
 }
 
-.button:active .bottom { margin: -20px 0 0 10px }
-
-.button:active .top { margin: -70px 0 0 10px }
+.code {
+  position: relative;
+  margin-left: 10px;
+  background-color: hsl(250, 100%, 40%);
+  height: 3em;
+  width: 25em;
+  margin-bottom: 20px;
+}
+.code p {
+  padding-left: 10px;
+  padding-top: 0.8em;
+  font: 100 0.9rem/1.5 'KoHo';
+  color: white;
+}
 
 .toplink {
   color: hsl(230, 100%, 67%);
@@ -88,13 +103,18 @@ body {
   right: 20px;
 }
 
-.footer-note{
-  display: block;
+.footer-note {
   color: white;
-  background-color: hsl(230, 100%, 67%);
   text-align: center;
-  height: 25px;
   font-size: 0.85rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(230, 100%, 67%);
+  height: 25px;
   position: fixed;
   width: 100%;
   bottom: 0;
