@@ -1,12 +1,5 @@
 body {
-    font-family: 'Archivo', sans-serif;
     background: hsl(230, 100%, 67%);
-    height: 100%;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    width: 100%;
-
 }
 #head{
     margin-top: 1%;
