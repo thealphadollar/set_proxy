@@ -1,14 +1,9 @@
 body {
     font-family: 'Archivo', sans-serif;
-     background: hsl(230, 100%, 67%);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: hsl(230, 100%, 67%);
     height: 100%;
     padding: 0;
     margin: 0;
-    display: block;
     position: absolute;
     width: 100%;
 
