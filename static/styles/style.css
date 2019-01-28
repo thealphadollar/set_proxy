@@ -1,30 +1,30 @@
 body {
     background: hsl(230, 100%, 67%);
 }
-#head{
-    margin-top: 1%;
+
+#head {
+    margin-top: 20px;
     text-align: center;
     color: white;
     font:normal 3.8vw Lucida Sans Unicode,Lucida Grande,sans-serif;
     margin-bottom: 10px;
 }
-#head2{
-    margin-bottom: 10px;
+
+#head2 {
+    margin-bottom: 20px;
     text-align: center;
     color: rgba(255,255,255,0.6);
     font:normal 1.95vw Lucida Sans Unicode,Lucida Grande,sans-serif;
 }
 
-
 .button {
     width: 200px;
-    margin: 0px auto;
+    margin: 0 auto;
     margin-bottom: 40px;
-    padding-top: 2%;
 }
+
 .button a {
     display: block;
-    height: 50px;
     width: 200px;
     color: white;
     font: 17px/50px Helvetica, Verdana, sans-serif;
@@ -35,7 +35,7 @@ body {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00b7ea), color-stop(100%,#009ec3));
 }
 
-.button a, p {
+.button a {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -45,14 +45,21 @@ body {
     display: block;
 }
 
-.bottom{
-    background: #222;
+.button p {
+  -moz-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
     display: block;
-    height: 40px;
+}
+
+.bottom{
+    display: block;
     width: 180px;
-    margin: -50px 0 0 10px;
+    height: 10px;
+    background: #222;
+    margin: -30px 0 0 0;
     text-align: center;
-    font: 12px/45px Helvetica, Verdana, sans-serif;
+    font: 12px/20px Helvetica, Verdana, sans-serif;
     color: #fff;
     position: absolute;
     z-index: -1;
@@ -60,7 +67,7 @@ body {
     -moz-transition: margin 0.5s ease;
 }
 
-.button:hover .bottom { margin: -10px 0 0 10px }
+.button:hover .bottom { margin: -10px 0 0 0; }
 
 
 .button a:active {
@@ -74,12 +81,10 @@ body {
 .button:active .top { margin: -70px 0 0 10px }
 
 .footer{
-
   color: white;
   text-align: center;
   height: 25px;
   font-size: 95%;
   position: absolute;
   width: 100%;
-  clear: both;
 }
