@@ -3,7 +3,7 @@
 # created by thealphadollar
 # Contributions from TheMousePotato and Ayushk4
 
-if [ "$(id -u)" -ne 0 ]
+if [ $(id -u) -ne 0 ]
   then echo "Error: needs to be run as sudo!!"
   exit 1
 fi
@@ -30,17 +30,17 @@ if hash git 2>/dev/null; then
   git config --global --unset http.proxy
   git config --global --unset https.proxy
 fi
+echo "done"
 if hash docker 2>/dev/null; then
   truncate -s 0 /etc/systemd/system/docker.service.d/http-proxy.conf
   truncate -s 0 ~/.docker/config.json
   systemctl daemon-reload
   systemctl restart docker
 fi
-echo "done"
 }
 
 # setting system wide proxy
-set_systemwide_proxy ()
+set_systemwide_proxy () 
 {
 gsettings set org.gnome.system.proxy mode 'manual'
 gsettings set org.gnome.system.proxy.http host "$PROXY_HOST"
@@ -77,7 +77,7 @@ Acquire::https::proxy "http://${PROXY_HOST}:${PROXY_PORT}";
 Acquire::ftp
  {
    Proxy "ftp://${PROXY_HOST}:${PROXY_PORT}";
-   ProxyLogin
+   ProxyLogin 
    {
       "USER $(SITE_USER)@$(SITE)";
       "PASS $(SITE_PASS)";
@@ -103,7 +103,7 @@ EOF
 echo "Environment proxy set"
 }
 
-# setting bash profile proxy
+# setting bash profile proxy 
 set_profile_proxy ()
 {
 touch /etc/profile.d/proxy.sh
@@ -128,7 +128,7 @@ fi
 echo "Git proxy set"
 }
 
-#setting docker proxy
+# setting docker proxy
 set_docker_proxy ()
 {
 if hash docker 2>/dev/null; then
@@ -172,44 +172,40 @@ echo "Docker proxy set"
 }
 
 if [ "$#" -eq 1 ]; then
-  case $1 in
-    -u| --unset)
+  case $1 in    
+    -u| --unset)    
       reset_proxy
       exit 0
       ;;
-    *)
-      exit_with_usage
+    *)          
+      exit_with_usage 
       ;;
   esac
-fi
-
-if [ "$#" -eq 4 ]; then
-  while [ "$1" != "" ]; do
+elif [ "$#" -eq 4 ]; then
     case $1 in
       -h| --host)
         shift
         PROXY_HOST=$1
-        echo "$PROXY_HOST"
+        echo $PROXY_HOST
         shift
         case $1 in
           -p| --port)
             shift
             PROXY_PORT=$1
-            echo "$PROXY_PORT"
+            echo $PROXY_PORT
             shift
             ;;
-          *)
-            exit_with_usage
+          *) 
+            exit_with_usage 
             ;;
         esac
         ;;
-      *)
-        exit_with_usage
+      *) 
+        exit_with_usage 
         ;;
     esac
-  done
-  else
-    exit_with_usage
+else
+  exit_with_usage
 fi
 
 set_systemwide_proxy
