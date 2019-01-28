@@ -81,15 +81,12 @@ body {
 
 .toplink {
   color: hsl(230, 100%, 67%);
-  -webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
   position: fixed;
   bottom: 25px;
   right: 20px;
 }
 
-.footer{
+.footer-note{
   display: block;
   color: white;
   background-color: hsl(230, 100%, 67%);
