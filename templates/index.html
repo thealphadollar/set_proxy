@@ -27,26 +27,33 @@
   <article id="instruction">
     <h1><a class="underline" href="#instruction">Instructions</a></h1>
 
-    <h2>To set proxy:</h2>
+    <h3>Set the proxy</h3>
     <p>
-      1. Open the downloads directory in the terminal<br>
-      2. Execute <strong>sudo bash set_proxy.sh -h [PROXY HOST] -p [PROXY PORT]</strong><br>
-      3. Enter <em>proxy host</em> (<strong>172.16.2.30</strong> for KGP) and <em>proxy port</em> (<strong>8080</strong> for KGP)
+     Open the downloads directory in the terminal.
+    </p>
+    <p>
+      Execute the following:
     </p>
     <div class="code">
-      <p>$ sudo bash set_proxy.sh -h 172.16.2.30 -p 8080</p>
+      <p>$ sudo bash set_proxy.sh -h &ltproxy_host&gt -p &ltproxy_port&gt</p>
     </div>
+    <p>
+      For IIT KGP users, enter <em>proxy host-&gt</em> <strong>172.16.2.30</strong>
+      and <em>proxy port-&gt</em> <strong>8080</strong>
+    </p>
 
-  	<h2>To unset proxy:</h2>
+  	<h3>Unset the proxy</h3>
   	<p>
-      1. Open the downloads directory in the terminal<br>
-  		2. Execute <strong>sudo bash set_proxy.sh -u</strong>
-  	</p>
+      Open the downloads directory in the terminal.
+    </p>
+    <p>
+        Execute the following:
+      </p>
     <div class="code">
       <p>$ sudo bash set_proxy.sh -u</p>
     </div>
 
-    <h2>Known Issues:</h2>
+    <h3>Known Issues</h3>
   	<p>
   		Some Users might need to change <strong>Settings->Network->Proxy</strong> from <strong>Off</strong> to <strong>Manual</strong>.
   	</p>

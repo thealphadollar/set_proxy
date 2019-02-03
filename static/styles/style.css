@@ -1,5 +1,5 @@
 body {
-    background: hsl(260, 59%, 35%);
+    background: #353537;
 }
 
 #head {
@@ -27,14 +27,14 @@ body {
 .button a {
     width: 10rem;
     height: 2.5rem;
-    color: white;
+    color: #353537;
     font: 300 1.0rem/1.0 "sans-serif";
     text-decoration: none;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    background: hsla(342, 65%, 41%, 1);
+    background: #3cb371;
 }
 
 .button a {
@@ -55,7 +55,7 @@ body {
   -moz-border-radius: 0 0 10px 10px;
   -webkit-border-radius: 0 0 10px 10px;
   border-radius: 0 0 10px 10px;
-  background-color: #222;
+  background-color: #111;
   margin: -1.1rem 0 0 0;
   display: none;
   z-index: -1;
@@ -76,12 +76,12 @@ body {
 }
 
 .code {
+  border-radius: 4px;
   position: relative;
-  margin-left: 10px;
-  background-color: hsl(260, 59%, 22%);
+  background-color: #2e2e2e;
   height: 3rem;
-  width: 25rem;
-  margin-bottom: 1.5rem;
+  width: 100%;
+  margin-bottom: 1.0rem;
 }
 
 .code p {
@@ -111,7 +111,7 @@ body {
 }
 
 .footer-note {
-  color: white;
+  color: black;
   text-align: center;
   font-size: 0.85rem;
 }
@@ -120,7 +120,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: hsl(260, 59%, 38%);
+  background-color: #3cb371;
   height: 1.2rem;
   position: fixed;
   width: 100%;

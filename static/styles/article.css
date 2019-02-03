@@ -7,7 +7,9 @@ article {
   background: white;
 }
 
-article * { grid-column: start / end; }
+article * { 
+  grid-column: start / end;
+}
 
 @media (max-width: 8.5in) {
     article {
