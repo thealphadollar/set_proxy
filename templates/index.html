@@ -1,48 +1,79 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Proxy Master</title>
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="stylesheet" type="text/css" href="../static/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=KoHo" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i">
+    <link rel="stylesheet" type="text/css" href="../static/styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/-debug.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/article.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/article-figure.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/article-text.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/article-share.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/style.css">
 </head>
 
 <body>
 	<h1 id="head">Proxy Master</h1>
-	<h2 id="head2">One Script to Set It All!</h2>
+	<h2 id="head2">One script to set it all!</h2>
 	<div class="button">
         <a href="../static/set_proxy.sh" download="set_proxy.sh">Download</a>
-        <p class="bottom">set_proxy.sh</p>
+  </div>
+  <div class="bottom">
+      <p>set_proxy.sh</p>
+  </div>
+  <article id="instruction">
+    <h1><a class="underline" href="#instruction">Instructions</a></h1>
+
+    <h3>Set the proxy</h3>
+    <p>
+     Open the downloads directory in the terminal.
+    </p>
+    <p>
+      Execute the following:
+    </p>
+    <div class="code">
+      <p>$ sudo bash set_proxy.sh -h &ltproxy_host&gt -p &ltproxy_port&gt</p>
     </div>
-    <div class="info">
-    	<h2 style="text-align: left;">Instructions</h2>
-	<h3 style="text-align: left;">Set proxy:</h3>
-    	<ol>
-    		<li>Open the downloads directory in the terminal.</li>
-    		<li>Execute <b><em>sudo bash set_proxy.sh -h [PROXY HOST] -p [PROXY    				PORT]</em></b></li>
-    		<li> Enter 'proxy host' <b><em>(172.16.2.30 for KGP)</em></b> and 'proxy 				port' <b><em>(8080 for KGP).</em></b></li>
-        </ol>
-        <h3 style="text-align: left;">Unset proxy:</h3>
-        <ol>
-            <li>Execute <b><em>sudo bash set_proxy.sh -u</em></b></li>
-        </ol>
-        <h3 style="text-align: left;">Known issues:</h3>
-        <ol>
-            <li>Some Users might need to enable change Settings->Network->Proxy to 		   Manual from Off.</li>
-        </ol>
+    <p>
+      For IIT KGP users, enter <em>proxy host -&gt</em> <strong>172.16.2.30</strong>
+      and <em>proxy port -&gt</em> <strong>8080</strong>
+    </p>
+
+  	<h3>Unset the proxy</h3>
+  	<p>
+      Open the downloads directory in the terminal.
+    </p>
+    <p>
+        Execute the following:
+      </p>
+    <div class="code">
+      <p>$ sudo bash set_proxy.sh -u</p>
     </div>
-    <div class="image">
-    	<fieldset>
-    		<p style="font-size: 120%"><b>To Set Proxy:</b></p>
-    		<img src="../static/SettingProxy.png">
-        	<p style="font-size: 120%"><b>To Unset Proxy:</b></p>
-        	<img src="../static/UnsettingProxy.png">
-        </fieldset>
+
+    <h3>Known Issues</h3>
+  	<p>
+  		Some Users might need to change <strong>Settings->Network->Proxy</strong> from <strong>Off</strong> to <strong>Manual</strong>.
+  	</p>
+    <div class="share">
+      <a href="https://www.facebook.com/metakgp/"><img src="../static/img/facebook.svg" alt=""></a>
+      <a href="https://twitter.com/metakgp"><img src="../static/img/twitter.svg" alt=""></a>
+      <a href="https://github.com/metakgp"><img src="../static/img/github.svg" alt=""></a>
     </div>
-    <br><br>
+  </article>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+  <script src="../static/scripts/index.js" charset="utf-8"></script>
+
 </body>
 
-<footer class="footer">Contribute to this project on <a href="https://github.com/CodeStash-KGP/set_proxy" target="_blank">Github</a> | Powered by <a href="https://www.facebook.com/codestashkgp/" target="_blank">MetaKGP</a> with ♥</footer>
+<footer class="footer">
+  <span class="toplink"><a href="#instruction">⬆</a></span>
+  <div class="footer-note">
+    Contribute to this project on <a class="underline" href="https://github.com/CodeStash-KGP/set_proxy" target="_blank">Github</a> | Powered by <a class="underline" href="https://www.facebook.com/codestashkgp/" target="_blank">MetaKGP</a> with ♥
+  </div>
+</footer>
 
 </html>

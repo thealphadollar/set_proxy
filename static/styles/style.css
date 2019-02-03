@@ -1,0 +1,128 @@
+body {
+    background: #353537;
+}
+
+#head {
+    margin-top: 1rem;
+    text-align: center;
+    color: white;
+    font: 400 2.5rem/1.3 "sans-serif";
+    margin-bottom: 0.5rem;
+}
+
+#head2 {
+    text-align: center;
+    color: rgba(255,255,255,0.6);
+    font: 400 1.15rem/1.2 "sans-serif";
+    margin-bottom: 1rem;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.button a {
+    width: 10rem;
+    height: 2.5rem;
+    color: #353537;
+    font: 450 1.0rem/1.0 "sans-serif";
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    background: #3cb371;
+}
+
+.button a {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    -moz-box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+}
+
+.bottom {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9.6rem;
+  height: 1.6rem;
+  -moz-border-radius: 0 0 10px 10px;
+  -webkit-border-radius: 0 0 10px 10px;
+  border-radius: 0 0 10px 10px;
+  background-color: #111;
+  margin: -1.1rem 0 0 0;
+  display: none;
+  z-index: -1;
+  -webkit-transition: margin 0.5s ease;
+  -moz-transition: margin 0.5s ease;
+  margin-bottom: 1rem;
+}
+
+.bottom p {
+  padding-top: 0.35rem;
+  padding-left: 5.5em;
+  font: 250 0.55rem/1.5 "sans-serif";
+  color: #fff;
+}
+
+.button a:active {
+    background: hsla(342, 65%, 35%, 1);
+}
+
+.code {
+  border-radius: 4px;
+  position: relative;
+  background-color: #2e2e2e;
+  height: 3rem;
+  width: 100%;
+  margin-bottom: 1.0rem;
+}
+
+.code p {
+  letter-spacing: 0.05rem;
+  word-spacing: 0.3rem;
+  padding-left: 0.5rem;
+  padding-top: 0.9rem;
+  font: 100 0.8rem/1.5 'KoHo';
+  color: white;
+}
+
+@media (max-width: 8.5in) {
+  .code {
+    width: 60%;
+    grid-column: start/end;
+  }
+  .code p {
+    font: 100 1.2rem/1.5 'KoHo';
+  }
+}
+
+.toplink {
+  color: hsl(230, 100%, 67%);
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+}
+
+.footer-note {
+  color: black;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3cb371;
+  height: 1.2rem;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
