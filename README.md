@@ -12,10 +12,18 @@ Ubuntu/Debian system.
 - Environment</br>
 - Terminal</br>
 - Git</br>
+- Docker</br>
 
 ## How to run
 
-You need to have internet to download the script, use mobile data and hotspot.
+You need to have internet (working without proxy) to download the script: use mobile data and hotspot.
+
+### Using Browser
+
+- Open `http://proxymaster.herokuapp.com` and download the script.
+- Follow the instructions on the page to set proxy.
+
+### Using Terminal Only
 
 - Open terminal by pressing `Ctrl+Alt+T`
 - Install wget. </br>
@@ -25,7 +33,7 @@ You need to have internet to download the script, use mobile data and hotspot.
 - Unzip the file.</br>
     `unzip master.zip`
 - Change directory to the inflated archive folder.</br>
-    `cd set_proxy-master`
+    `cd set_proxy-master/static`
 - To set the proxy </b>
     `sudo bash set_proxy.sh -h [PROXY HOST] -p [PROXY PORT]`
 - Enter `proxy host` (172.16.2.30 for KGP) and `proxy port` (8080 for KGP).</br>
