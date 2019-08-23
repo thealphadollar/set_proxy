@@ -111,6 +111,21 @@ echo "Profile proxy set"
 }
 
 # application specific proxy
+set_docker_proxy()
+{
+if [ -f /etc/systemd/system/docker.service.d/proxy.conf ]; then
+  rm -rf /etc/systemd/system/docker.service.d/proxy.conf
+  sudo mkdir -p /etc/systemd/system/docker.service.d
+  sudo touch /etc/systemd/system/docker.service.d/proxy.conf
+fi 
+a='"'
+echo "[Service]" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo "Environment=${a}HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/${a}" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo "Environment=${a}HTTPS_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/${a}" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo 'Environment="NO_PROXY=localhost,127.0.0.1,::1' >> /etc/systemd/system/docker.service.d/proxy.conf
+
+echo "Docker proxy set"
+}
 
 # setting Git proxy
 set_git_proxy ()
@@ -169,3 +184,4 @@ set_apt_proxy_old
 set_apt_proxy
 set_profile_proxy
 set_git_proxy
+set_docker_proxy
