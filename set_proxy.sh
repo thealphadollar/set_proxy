@@ -30,6 +30,11 @@ if hash git 2>/dev/null; then
   git config --global --unset http.proxy
   git config --global --unset https.proxy
 fi
+if [ -a /etc/systemd/system/docker.service.d/proxy.conf ]; then
+  sudo rm -rf /etc/systemd/system/docker.service.d/proxy.conf
+fi
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
 echo "done"
 }
 
@@ -111,6 +116,25 @@ echo "Profile proxy set"
 }
 
 # application specific proxy
+set_docker_proxy()
+{
+if [ -a /etc/systemd/system/docker.service.d/proxy.conf ]; then
+  sudo rm -rf /etc/systemd/system/docker.service.d/proxy.conf
+fi
+if [ ! -d /etc/systemd/system/docker.service.d ]; then
+  sudo mkdir -p /etc/systemd/system/docker.service.d
+fi 
+sudo touch /etc/systemd/system/docker.service.d/proxy.conf
+a='"'
+echo "[Service]" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo "Environment=${a}HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/${a}" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo "Environment=${a}HTTPS_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/${a}" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo 'Environment="NO_PROXY=localhost,127.0.0.1,::1' >> /etc/systemd/system/docker.service.d/proxy.conf
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
+echo "Docker proxy set"
+}
 
 # setting Git proxy
 set_git_proxy ()
@@ -169,3 +193,4 @@ set_apt_proxy_old
 set_apt_proxy
 set_profile_proxy
 set_git_proxy
+set_docker_proxy
