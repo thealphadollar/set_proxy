@@ -1,9 +1,9 @@
 #! /bin/sh
 # A script to set system-wide proxy in Ubuntu / Debian
-# Created by thealphadollar
-# Contributions from TheMousePotato, Ayushk4 and baymac
+# created by thealphadollar
+# Contributions from TheMousePotato and Ayushk4
 
-if [ $(id -u) -ne 0 ]
+if [ `id -u` -ne 0 ]
   then echo "Error: needs to be run as sudo!!"
   exit 1
 fi
@@ -30,13 +30,12 @@ if hash git 2>/dev/null; then
   git config --global --unset http.proxy
   git config --global --unset https.proxy
 fi
-echo "done"
-if hash docker 2>/dev/null; then
-  truncate -s 0 /etc/systemd/system/docker.service.d/http-proxy.conf
-  truncate -s 0 ~/.docker/config.json
-  systemctl daemon-reload
-  systemctl restart docker
+if [ -a /etc/systemd/system/docker.service.d/proxy.conf ]; then
+  sudo rm -rf /etc/systemd/system/docker.service.d/proxy.conf
 fi
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
+echo "done"
 }
 
 # setting system wide proxy
@@ -117,6 +116,25 @@ echo "Profile proxy set"
 }
 
 # application specific proxy
+set_docker_proxy()
+{
+if [ -a /etc/systemd/system/docker.service.d/proxy.conf ]; then
+  sudo rm -rf /etc/systemd/system/docker.service.d/proxy.conf
+fi
+if [ ! -d /etc/systemd/system/docker.service.d ]; then
+  sudo mkdir -p /etc/systemd/system/docker.service.d
+fi 
+sudo touch /etc/systemd/system/docker.service.d/proxy.conf
+a='"'
+echo "[Service]" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo "Environment=${a}HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/${a}" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo "Environment=${a}HTTPS_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/${a}" >> /etc/systemd/system/docker.service.d/proxy.conf
+echo 'Environment="NO_PROXY=localhost,127.0.0.1,::1' >> /etc/systemd/system/docker.service.d/proxy.conf
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker.service
+echo "Docker proxy set"
+}
 
 # setting Git proxy
 set_git_proxy ()
@@ -126,49 +144,6 @@ if hash git 2>/dev/null; then
   git config --global https.proxy "http://${PROXY_HOST}:${PROXY_PORT}"
 fi
 echo "Git proxy set"
-}
-
-# setting docker proxy
-set_docker_proxy ()
-{
-if hash docker 2>/dev/null; then
-      if [ ! -d "/etc/systemd/system/docker.service.d" ]
-      then
-               mkdir /etc/systemd/system/docker.service.d
-      fi
-      touch /etc/systemd/system/docker.service.d/http-proxy.conf
-      tee  /etc/systemd/system/docker.service.d/http-proxy.conf <<EOF
-[Service]
-Environment="HTTP_PROXY=http://${PROXY_HOST}:${PROXY_PORT}/"
-Environment="NO_PROXY=localhost,127.0.0.0/8"
-EOF
-      if [ ! -d "$HOME/.docker" ] 
-      then
-              mkdir ~/.docker
-      fi
-      touch ~/.docker/config.json
-      tee  ~/.docker/config.json <<EOF
-{
- "proxies":
- {
-   "default":
-   {
-     "httpProxy": "http://${PROXY_HOST}:${PROXY_PORT}",
-     "noProxy": "*.test.example.com,.example2.com",
-     "httpsProxy": "https://${PROXY_HOST}:${PROXY_PORT}",
-     "ftpProxy": "ftp://${PROXY_HOST}:${PROXY_PORT}"
-   }
- }
-}
-EOF
-      #flash changes
-      systemctl daemon-reload
-      #verify proxy setting
-      systemctl show --property Environment docker
-      #restart docker
-      systemctl restart docker
-fi
-echo "Docker proxy set"
 }
 
 if [ "$#" -eq 1 ]; then
@@ -181,7 +156,10 @@ if [ "$#" -eq 1 ]; then
       exit_with_usage 
       ;;
   esac
-elif [ "$#" -eq 4 ]; then
+fi
+
+if [ "$#" -eq 4 ]; then
+  while [ "$1" != "" ]; do
     case $1 in
       -h| --host)
         shift
@@ -204,8 +182,9 @@ elif [ "$#" -eq 4 ]; then
         exit_with_usage 
         ;;
     esac
-else
-  exit_with_usage
+  done
+  else
+    exit_with_usage
 fi
 
 set_systemwide_proxy
